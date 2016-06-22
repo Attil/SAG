@@ -102,8 +102,10 @@ class Agent(spade.Agent.Agent):
             if self.msg:
                 print "Got answer! {} said: {}".format(self.msg.getSender().getName(), self.msg.getContent())
                 self.myAgent.answers[self.msg.getSender().getName()] = self.msg.getContent()
-            else:
-                print "Didn't get an answer"
+
+                if len(self.myAgent.receivers) == len(self.myAgent.answers):
+                    print 'Got all answers!'
+                    self.myAgent.finished = True
 
         def onEnd(self):
-            print "Got an answer!"
+            print "Finished listening for answers!"

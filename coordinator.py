@@ -28,10 +28,13 @@ if __name__ == "__main__":
 
 	args = ' '.join(argv[1:])
 	a.content = args or "spade:2 diamond:j heart:k heart:q"
+	a.finished = False
 	a.start()
 	try:
-		while True:
+		while not a.finished:
 			pass
 	except KeyboardInterrupt:
-		a.stop()
-		print 'Answers:\n{}'.format(a.answers)
+		pass
+
+	a.stop()
+	print 'Answers:\n{}'.format(a.answers)
